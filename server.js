@@ -1,12 +1,15 @@
 require("dotenv").config();
 const express = require('express');
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const app = express();
-mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI); //mongodb://localhost/idea-board
+const bodyParser = require('body-parser');
+const UserController = require('./routes/UserController')
 
+mongoose.Promise = global.Promise;
+const app = express();
+
+mongoose.connect(process.env.MONGODB_URI);
 const connection = mongoose.connection;
+
 connection.on('connected', () => {
 console.log('Mongoose Connected Successfully');
 });
@@ -17,11 +20,15 @@ console.log('Mongoose default connection error: ' + err);
 });
 
 app.use(express.static(__dirname + '/client/build/'));
+app.use(bodyParser.json());
+
+app.use('api/user', UserController)
+
+//index renders in react app
 app.get('/', (req,res) => {
 	res.sendFile(__dirname + '/client/build/index.html')
 })
 
-app.use(bodyParser.json());
 app.get('/', (req,res) => {
 res.send('Hello world!')
 })
