@@ -13,11 +13,8 @@ default:"product description here"
 })
 
 const userSchema = mongoose.Schema({
-name: {
-    type: String,
-},
-password: String,
-    
+name: String,
+password: String,    
 })
 
 const User = mongoose.model('User', userSchema)
