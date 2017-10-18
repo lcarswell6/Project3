@@ -9,14 +9,14 @@ default: "product name"
 type: String,
 default:"product description here"
     }, 
-    productPrice = Number,
+    productPrice: Number,
 })
 
 const userSchema = mongoose.Schema({
 name: {
     type: String,
 },
-password = String,
+password: String,
     
 })
 

@@ -1,27 +1,27 @@
 require('dotenv').config();
 const mongoose = require('mongoose')
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI, {useMongoClient: true})
 mongoose.Promise = global.Promise
 
 const { User, Product } = require('./schema')
 
 const hats = new Product({
-    name = "new hat",
-    description = "this is a new hat",
-    price = 29.00,
+    name: "Hat",
+    description: "this is a new hat",
+    productPrice: 29.00,
 });
 const shoes = new Product({
-    name = "new shoe",
-    description ="this is a new shoe",
-    price = 29.00,
+    name: "Shoe",
+    description: "this is a new shoe",
+    productPrice: 29.00,
 });
 
-const member = new User({
-    userName = 'New Member',
-    userPassword = "new_member"
+const user = new User({
+    name: 'New Member',
+    password: "asdf"
 });
 
 User.remove({})
-    .then(() => member.save())
+    .then(() => user.save())
     .then(() => console.log('save success'))
     .then(() => mongoose.connection.close())

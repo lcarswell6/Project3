@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Redirect } from 'react-router-dom'
 
 class SignUpForm extends Component {
     state = {
@@ -7,30 +8,49 @@ class SignUpForm extends Component {
             userName: '',
             password: ''
         },
-newUserId: '',
+        redirectToLogin: false,
+        newUserId: '',
     }
 
+    //handleChange is called to be able to input data in form
     handleChange = (event) => {
         const attribute = event.target.name
 
-        const updatedUser = {...this.state.newUser}
+        const updateUser = { ...this.state.newUser }
+        updateUser[attribute] = event.target.value
+
+        this.setState({ newUser: updateUser })
     }
+
+    handleSubmit = async (event) => {
+        event.preventDefault()
+        const res = await axios.post('/api/users', {
+            'user': this.state.newUser
+        })
+        this.setState({ redirectToLogin: true, newUserId: res.data._id })
+    }
+
+
     render() {
+        if (this.state.redirectToLogin) {
+            return <Redirect to={`/login/${this.state.newUserId}`} />
+        }
+
         return (
             <div>
                 <h1>Sign Up</h1>
                 <form onSubmit={this.handleSubmit}>
                     <div>
                         <label htmlFor="userName">User Name</label>
-                        <input onChange={this.handleChange}
-                        name="userName" type="text" value={this.state.newUser.userName}
+                        <input onChange={this.handleChange} name="userName" 
+                        type="text" value={this.state.newUser.userName}
                         />
                     </div>
                     <div>
                         <label htmlFor="password">Password</label>
                         <input onChange={this.handleChange}
-                        name="password" type="text" 
-                        value={this.state.newUser.password} />
+                            name="password" type="text"
+                            value={this.state.newUser.password} />
                     </div>
                     <button>Sign Up</button>
                 </form>
@@ -39,11 +59,5 @@ newUserId: '',
     }
 
 }
-
-
-
-
-
-
 
 export default SignUpForm
