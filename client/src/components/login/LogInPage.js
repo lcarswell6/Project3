@@ -24,12 +24,12 @@ class LogInPage extends Component {
     render() {
         return (
             <div>
-                <h1> Choose a User
+                <h1> Choose a User</h1>
                     <br/>
                 {this.state.users.map(user => {
                         return (<Link key={user._id} to={`/login/${user._id}`} >{user.name}</Link>)
                     })}
-                </h1>
+                
                 <SignUpForm />
             </div>
         )
