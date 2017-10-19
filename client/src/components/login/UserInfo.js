@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
+import styled from 'styled-components'
 
+const ProfileStyles = styled.div`
+height: 500px;
+weight: 300px;
+border: 10px solid red;
+color: white;
+background-color: grey;
+position: relative;
+input[type=text]:focus {
+    background-color: lightblue;
+}
 
+`
 
 class UserInfo extends Component {
-
     state = {
         user: {
             name: "",
@@ -72,15 +83,17 @@ class UserInfo extends Component {
             return <Redirect to={`/login`}/>
         }
         return (
-            <div>
+            <ProfileStyles>
 
-                <h1>User Profile</h1>
+                <h1>User Info</h1>
                 <h1>{this.state.user.name}</h1>
-                <button onClick={handleDelete}>Delete User</button>
+                <h3>Update User Info</h3>
                 <input onBlur={updateUser} onChange={this.handleChange} name="name" value={this.state.user.name} />
                 <input onBlur={updateUser} onChange={this.handleChange} name="password" value={this.state.user.password}/>
+                <br/>
+                <button onClick={handleDelete}>Delete User</button>
 
-            </div>
+            </ProfileStyles>
         )
     }   
 }

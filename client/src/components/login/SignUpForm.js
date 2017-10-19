@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
+import styled from 'styled-components'
 
+
+const StylePassword = styled.div`
+input[type=text]:focus {
+    border: 3px solid #555;
+}`
 class SignUpForm extends Component {
     state = {
         newUser: {
@@ -46,12 +52,12 @@ class SignUpForm extends Component {
                         type="text" value={this.state.newUser.name}
                         />
                     </div>
-                    <div>
+                    <StylePassword>
                         <label htmlFor="password">Password</label>
                         <input onChange={this.handleChange}
                             name="password" type="text"
                             value={this.state.newUser.password} />
-                    </div>
+                    </StylePassword>
                     <button>Sign Up</button>
                 </form>
             </div>

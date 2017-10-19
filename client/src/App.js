@@ -6,7 +6,7 @@ import LogInPage from './components/login/LogInPage'
 import HomePage from './components/home/HomePage'
 import NavBar from './components/NavBar'
 import UserInfo from './components/login/UserInfo'
-
+import Shoes from './components/products/shoes/Shoes'
 
 class App extends Component {
 
@@ -16,12 +16,15 @@ class App extends Component {
 
       <Router>
         <div>
+
           <NavBar />
           <Switch>
-            <Route exact path='/' component={HomePage} />
-            <Route exact path='/login' component={LogInPage} />
-            <Route exact path='/login/:userId' component={UserInfo}/>
+              <Route exact path='/' component={HomePage} />
+              <Route exact path='/login' component={LogInPage} />
+              <Route exact path='/login/:userId' component={UserInfo} />
+              <Route exact path='/shoes' component={Shoes} />
           </Switch>
+
         </div>
       </Router>
 
