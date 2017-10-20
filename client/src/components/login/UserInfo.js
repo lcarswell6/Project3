@@ -4,16 +4,12 @@ import { Redirect } from 'react-router-dom'
 import styled from 'styled-components'
 
 const ProfileStyles = styled.div`
-height: 500px;
+height: 1000px;
 weight: 300px;
 border: 10px solid red;
-color: white;
+color: black;
 background-color: grey;
 position: relative;
-input[type=text]:focus {
-    background-color: lightblue;
-}
-
 `
 
 class UserInfo extends Component {
@@ -88,8 +84,8 @@ class UserInfo extends Component {
                 <h1>User Info</h1>
                 <h1>{this.state.user.name}</h1>
                 <h3>Update User Info</h3>
-                <input onBlur={updateUser} onChange={this.handleChange} name="name" value={this.state.user.name} />
-                <input onBlur={updateUser} onChange={this.handleChange} name="password" value={this.state.user.password}/>
+                Name: <input onBlur={updateUser} onChange={this.handleChange} name="name" value={this.state.user.name} />
+                Password: <input onBlur={updateUser} onChange={this.handleChange} name="password" value={this.state.user.password}/>
                 <br/>
                 <button onClick={handleDelete}>Delete User</button>
 

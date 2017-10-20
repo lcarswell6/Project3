@@ -3,13 +3,12 @@ import styled from 'styled-components'
 
 const HomeStyles = styled.div`
 background-color: black;
+text-align: center;
 color: white;
-height: 800px;
-max-width: 900px;
+height: 100%;
+max-width: 100%;
 min-width: 400px;
-border: 10px solid red;
-margin: 10px;
-padding:10px;
+
 `
 
 class HomePage extends Component {
@@ -17,8 +16,10 @@ class HomePage extends Component {
         return (
             <HomeStyles>
                 <h1>
-                    <strong>Home Page</strong>
+                    <strong>Is You Shoppin or Nah?</strong>
                 </h1>
+                <img src="https://i.imgur.com/w4RNX50.jpg" />
+
             </HomeStyles>
         );
     }

@@ -54,7 +54,7 @@ router.delete('/:id', async (req, res) => {
     try {
         console.log(req.params.id)
         const user = await User.findByIdAndRemove(req.params.id)
-        const users = User.find({})
+        const users = User.find()
         console.log(users)
         res.json('users')
     } catch (err) {

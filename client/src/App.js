@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styled from 'styled-components'
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
@@ -8,6 +9,10 @@ import NavBar from './components/NavBar'
 import UserInfo from './components/login/UserInfo'
 import Shoes from './components/products/shoes/Shoes'
 
+
+const AppStyles = styled.div`
+background: black;
+`
 class App extends Component {
 
 
@@ -15,7 +20,7 @@ class App extends Component {
     return (
 
       <Router>
-        <div>
+        <AppStyles>
 
           <NavBar />
           <Switch>
@@ -25,7 +30,7 @@ class App extends Component {
               <Route exact path='/shoes' component={Shoes} />
           </Switch>
 
-        </div>
+        </AppStyles>
       </Router>
 
     );
